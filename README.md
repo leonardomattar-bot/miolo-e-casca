@@ -5,7 +5,7 @@ Projeto pessoal e local: receitas do maquinadepao.com.br reorganizadas e adaptad
 
 ## Como abrir
 
-Abra `site/index.html` no navegador (duplo clique). Funciona offline, sem servidor.
+Abra `docs/index.html` no navegador (duplo clique). Funciona offline, sem servidor.
 Favoritos, "já fiz", anotações e o rascunho do criador de receitas ficam salvos só nesse navegador.
 
 ## Estrutura
@@ -14,7 +14,7 @@ Favoritos, "já fiz", anotações e o rascunho do criador de receitas ficam salv
 |---|---|
 | `etapa1-extracao/` | Etapa 1: texto extraído de cada receita (`receitas.json`), guias de dicas (`dicas.json`), índice (`EXTRACAO.md`) e lista do que foi descartado (`excluidos.json`) |
 | `fichas/<coleção>/*.md` | Etapa 3: uma ficha Markdown por receita (761) |
-| `site/` | Etapa 2: landing page (`index.html`), dados (`dados.js`) e fotos padronizadas em 640×480 (`fotos/`) |
+| `docs/` | Etapa 2: landing page (`index.html`), dados (`dados.js`) e fotos padronizadas em 640×480 (`fotos/`). É a pasta publicada pelo GitHub Pages |
 | `dados/fotos_web.json` | Origem (página e domínio) de cada foto buscada na web para receitas que não tinham foto no site |
 | `dados/fotos_referencia.json` | Receita de origem de cada foto de referência adaptada |
 | `dados/` | Dados intermediários e o recorte de energia da tabela TACO usado nos cálculos |
@@ -54,3 +54,23 @@ python3 scripts/buscar_fotos_web.py      # opcional; pode ser interrompido e ret
 python3 scripts/fotos_referencia.py
 python3 scripts/gerar_site.py
 ```
+
+## Publicação no GitHub Pages
+
+Publicado em <https://leonardomattar-bot.github.io/miolo-e-casca/> (repositório público).
+
+- A pasta publicada é `docs/` — o GitHub Pages não aceita outra pasta além de `/` e `/docs`.
+- As fichas ficam na **raiz** (`fichas/`) porque o link "Abrir ficha .md" do site usa `../fichas/...`;
+  o `index.html` da raiz apenas redireciona para `docs/`.
+- A página tem `<meta name="robots" content="noindex, nofollow">`: não é indexada por buscadores,
+  então só é encontrada por quem tem o link. Um `robots.txt` em subpasta **não** é respeitado por
+  buscadores — o que funciona é o `noindex` na própria página.
+
+Para atualizar:
+
+```bash
+cd C:/Users/leonardo/repos/miolo-e-casca
+git add -A && git commit -m "atualização" && git push
+```
+
+O site se republica em cerca de 1 minuto.
