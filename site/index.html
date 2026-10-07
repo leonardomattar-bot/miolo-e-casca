@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FAF6F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14100C" media="(prefers-color-scheme: dark)">
+<title>Miolo & Casca</title>
+<meta name="description" content="Receitas de pães, bolos, massas e geleias para máquina de pão, ajustadas para a Mondial NPF-54.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 34c0-14 11-22 24-22s24 8 24 22v14a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z' fill='%23C8894B'/%3E%3Cpath d='M20 24l4 8M30 22l3 9M40 24l3 8' stroke='%23F6E7B4' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+/* ==========================================================================
+   Miolo & Casca — camada visual inspirada nos princípios de design da Apple
+   (tipografia por tamanho, materiais translúcidos, resposta no toque,
+   molas interrompíveis, acessibilidade de movimento/transparência/contraste)
+   ========================================================================== */
+:root{
+  --fundo:#FAF6F0; --superficie:#FFFFFF; --superficie-2:#F3ECE2;
+  --preench:rgba(118,84,52,.085); --preench-2:rgba(118,84,52,.15); --separador:rgba(91,58,30,.13);
+  --casca:#8B5A2B; --casca-escura:#4A2F18; --mel:#C9862C; --mel-claro:#F6E3C0; --tinta:#FFF9F0;
+  --texto:#2A1E15; --texto-2:rgba(42,30,21,.68); --texto-3:rgba(42,30,21,.46);
+  --ervas:#4F7E36; --tomate:#B4442E;
+  --sombra-1:0 1px 1px rgba(60,38,20,.04),0 2px 10px rgba(60,38,20,.06);
+  --sombra-2:0 2px 4px rgba(60,38,20,.05),0 14px 34px rgba(60,38,20,.13);
+  --sombra-3:0 24px 80px rgba(30,18,8,.30),0 4px 16px rgba(30,18,8,.12);
+  --material:rgba(250,246,240,.72); --material-chip:rgba(255,252,247,.78); --veu:rgba(28,18,10,.42);
+  --raio-g:1.375rem; --raio:1.125rem; --raio-p:.75rem; --topo:3.5rem;
+  --sans:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:ui-serif,"New York","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --suave:cubic-bezier(.2,.8,.2,1);
+  /* nomes antigos, ainda usados pelo script */
+  --texto-suave:var(--texto-2); --linha:var(--separador); --papel:var(--superficie); --miolo:var(--superficie-2); --farinha:var(--fundo);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-tema="claro"]){--fundo:#14100C; --superficie:#211913; --superficie-2:#2B2119;--preench:rgba(255,232,205,.08); --preench-2:rgba(255,232,205,.15); --separador:rgba(255,232,205,.12);--casca:#E6B078; --casca-escura:#F7E2BF; --mel:#EBB45E; --mel-claro:#4A3820; --tinta:#21160E;--texto:#F4EADC; --texto-2:rgba(244,234,220,.68); --texto-3:rgba(244,234,220,.46);--ervas:#9CC27C; --tomate:#EE8D73;--sombra-1:0 1px 2px rgba(0,0,0,.35),0 0 0 1px rgba(255,232,205,.04); --sombra-2:0 14px 34px rgba(0,0,0,.45),0 0 0 1px rgba(255,232,205,.06);--sombra-3:0 24px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,232,205,.06);--material:rgba(20,16,12,.7); --material-chip:rgba(33,25,19,.72); --veu:rgba(0,0,0,.55); color-scheme:dark;}}
+:root[data-tema="escuro"]{--fundo:#14100C; --superficie:#211913; --superficie-2:#2B2119;--preench:rgba(255,232,205,.08); --preench-2:rgba(255,232,205,.15); --separador:rgba(255,232,205,.12);--casca:#E6B078; --casca-escura:#F7E2BF; --mel:#EBB45E; --mel-claro:#4A3820; --tinta:#21160E;--texto:#F4EADC; --texto-2:rgba(244,234,220,.68); --texto-3:rgba(244,234,220,.46);--ervas:#9CC27C; --tomate:#EE8D73;--sombra-1:0 1px 2px rgba(0,0,0,.35),0 0 0 1px rgba(255,232,205,.04); --sombra-2:0 14px 34px rgba(0,0,0,.45),0 0 0 1px rgba(255,232,205,.06);--sombra-3:0 24px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,232,205,.06);--material:rgba(20,16,12,.7); --material-chip:rgba(33,25,19,.72); --veu:rgba(0,0,0,.55); color-scheme:dark;}
+
+*,*::before,*::after{box-sizing:border-box}
+html{font-size:100%;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--topo) + env(safe-area-inset-top) + .75rem)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html:has(dialog[open]),html.folha-aberta{overflow:hidden}
+body{margin:0;background:var(--fundo);color:var(--texto);font:1rem/1.55 var(--sans);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-optical-sizing:auto}
+h1,h2,h3,h4{color:var(--casca-escura);margin:0 0 .5em;font-weight:700}
+h1,h2{font-family:var(--serif)}
+h3,h4{font-family:var(--sans);letter-spacing:-.012em;line-height:1.3}
+a{color:var(--casca);text-underline-offset:.18em}
+button,input,select,textarea{font:inherit;color:inherit;letter-spacing:inherit}
+button,a,summary,label,select,input{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:75rem;margin:0 auto;padding:0 max(1.25rem,env(safe-area-inset-right)) 0 max(1.25rem,env(safe-area-inset-left))}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--mel) 75%,transparent);outline-offset:2px}
+.i{width:1.125em;height:1.125em;flex:none;display:block}
+
+/* ---------- barra superior: material translúcido + borda de rolagem ---------- */
+header.topo{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top);
+  background:var(--material);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%)}
+header.topo::after{content:"";position:absolute;left:0;right:0;top:100%;height:.75rem;pointer-events:none;
+  background:linear-gradient(color-mix(in srgb,var(--texto) 8%,transparent),transparent);opacity:0;transition:opacity .3s}
+header.topo.rolou::after{opacity:1}
+.topo .wrap{display:flex;align-items:center;gap:1rem;height:var(--topo)}
+.marca{display:flex;align-items:center;gap:.625rem;text-decoration:none;color:var(--casca-escura);font-family:var(--serif);
+  font-size:1.3125rem;font-weight:700;letter-spacing:-.015em;line-height:1;white-space:nowrap}
+.marca svg{width:2.125rem;height:2.125rem;flex:none}
+.marca .amp{color:var(--mel);font-style:italic;font-weight:400}
+.marca small{display:block;font-family:var(--sans);font-size:.625rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-3);margin-top:.25rem}
+nav.menu{display:flex;gap:.125rem;margin-left:auto;padding:.1875rem;border-radius:999px;background:var(--preench)}
+nav.menu a{padding:.375rem .875rem;border-radius:999px;text-decoration:none;color:var(--texto-2);font-weight:500;font-size:.875rem;
+  white-space:nowrap;transition:background-color .25s,color .25s,box-shadow .25s}
+nav.menu a:hover{color:var(--texto)}
+nav.menu a[aria-current="true"]{background:var(--superficie);color:var(--casca-escura);box-shadow:var(--sombra-1)}
+.btn-icone{border:0;background:var(--preench);border-radius:999px;width:2.25rem;height:2.25rem;display:grid;place-items:center;cursor:pointer;flex:none;color:var(--texto-2);padding:0}
+@media (max-width:940px){nav.menu{display:none}.topo .wrap{justify-content:space-between}}
+
+/* ---------- resposta imediata ao toque (no pressionar, não no soltar) ---------- */
+.btn,.chip,.btn-icone,.tag-ativa,.tabela button,.btn-texto,.linha-ing .rem{transition:transform .3s var(--suave),background-color .2s,color .2s,box-shadow .25s,filter .2s}
+.btn:active,.chip:active,.btn-icone:active,.tag-ativa:active,.tabela button:active,.btn-texto:active,.linha-ing .rem:active{transform:scale(.96);transition-duration:.1s}
+.colecao,.card{transition:transform .35s var(--suave),box-shadow .35s var(--suave)}
+.colecao:active,.card:active{transform:scale(.98);transition-duration:.1s}
+@media (hover:hover) and (pointer:fine){
+  .colecao:hover,.card:hover{transform:translateY(-2px);box-shadow:var(--sombra-2)}
+  .card:hover .img img{transform:scale(1.035)}
+  .colecao:active,.card:active{transform:translateY(-1px) scale(.985)}
+  .btn:hover{filter:brightness(1.06)}
+  .chip:hover:not([aria-pressed="true"]),.btn-icone:hover{background:var(--preench-2)}
+}
+
+/* ---------- botões ---------- */
+.btn{border:0;border-radius:999px;min-height:2.75rem;padding:0 1.125rem;font-weight:600;font-size:.9375rem;letter-spacing:-.01em;cursor:pointer;
+  background:var(--casca);color:var(--tinta);display:inline-flex;align-items:center;justify-content:center;gap:.4375rem;text-decoration:none;white-space:nowrap}
+.btn.sec{background:color-mix(in srgb,var(--casca) 13%,transparent);color:var(--casca-escura)}
+.btn.fantasma{background:var(--preench);color:var(--texto)}
+.btn.pequeno{min-height:2.25rem;padding:0 .875rem;font-size:.875rem}
+.btn-texto{border:0;background:none;color:var(--casca);font-weight:600;font-size:1rem;cursor:pointer;padding:.25rem .125rem;border-radius:.5rem}
+.btn[hidden]{display:none}
+
+/* ---------- herói ---------- */
+.heroi{padding:clamp(2.5rem,7vw,5.5rem) 0 clamp(2rem,5vw,3.5rem)}
+.heroi .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:2.5rem;align-items:center}
+.heroi h1{font-size:clamp(2.5rem,6.2vw,4.75rem);line-height:1.02;letter-spacing:-.032em;margin-bottom:.35em;text-wrap:balance}
+.heroi h1 em{font-style:italic;color:var(--casca);font-weight:600}
+.heroi p.sub{font-size:clamp(1.0625rem,1.6vw,1.3125rem);line-height:1.45;letter-spacing:-.008em;color:var(--texto-2);max-width:34em;margin:0 0 1.75rem;text-wrap:pretty}
+.heroi p.sub b{color:var(--texto);font-weight:600}
+.busca{display:flex;align-items:center;gap:.5rem;background:var(--superficie);border-radius:999px;padding:.375rem .375rem .375rem 1rem;box-shadow:var(--sombra-2);max-width:40rem;transition:box-shadow .25s}
+.busca:focus-within{box-shadow:var(--sombra-2),0 0 0 4px color-mix(in srgb,var(--mel) 35%,transparent)}
+.busca>.i{color:var(--texto-3);width:1.25rem;height:1.25rem}
+.busca input{flex:1;border:0;background:transparent;outline:none;font-size:1.0625rem;min-width:0;height:2.5rem;-webkit-appearance:none;appearance:none}
+.busca input::placeholder{color:var(--texto-3)}
+.atalhos{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.125rem}
+.numeros{display:flex;gap:2.25rem;margin-top:2.25rem;flex-wrap:wrap}
+.numeros b{display:block;font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--casca-escura);font-variant-numeric:tabular-nums}
+.numeros span{font-size:.8125rem;color:var(--texto-2)}
+.pao-heroi{position:relative;aspect-ratio:1;max-width:23rem;justify-self:center;width:100%}
+.pao-heroi svg{width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(91,58,30,.22))}
+/* o vapor sobe três vezes e assenta: sem oscilação lenta em laço infinito */
+.vapor path{animation:vapor 4s ease-in-out 3;opacity:0}
+.vapor path:nth-child(2){animation-delay:1.3s}.vapor path:nth-child(3){animation-delay:2.6s}
+@keyframes vapor{0%{opacity:0;transform:translateY(10px)}40%{opacity:.55}100%{opacity:0;transform:translateY(-22px)}}
+@media (max-width:760px){.heroi .wrap{grid-template-columns:minmax(0,1fr);gap:1rem}.pao-heroi{max-width:11rem;order:-1}.numeros{gap:1.5rem}}
+
+/* ---------- chips (cápsulas) ---------- */
+.chip{text-align:left;border:0;background:var(--preench);border-radius:999px;padding:.4375rem .875rem;cursor:pointer;font-size:.875rem;font-weight:500;color:var(--texto);
+  min-height:2.125rem;display:inline-flex;align-items:center;gap:.375rem}
+.chip small{color:var(--texto-3);font-size:.75rem;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--casca);color:var(--tinta)}
+.chip[aria-pressed="true"] small{color:color-mix(in srgb,var(--tinta) 72%,transparent)}
+
+/* ---------- seções ---------- */
+section{padding:clamp(2.5rem,6vw,4.5rem) 0}
+.titulo-secao{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem 1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.titulo-secao h2{font-size:clamp(1.875rem,3.6vw,2.75rem);line-height:1.08;letter-spacing:-.025em;margin:0}
+.titulo-secao p{margin:.5rem 0 0;color:var(--texto-2);font-size:1.0625rem;line-height:1.45;max-width:40em}
+.acoes-cab{display:flex;gap:.5rem;flex-wrap:wrap}
+.grupo-col{font-family:var(--sans);font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-2);margin:1.75rem 0 .75rem}
+
+/* ---------- coleções ---------- */
+.colecoes{display:grid;grid-template-columns:repeat(auto-fill,minmax(11rem,1fr));gap:.875rem}
+.colecao{border:0;text-align:left;cursor:pointer;border-radius:var(--raio-g);padding:1.125rem;background:var(--superficie);box-shadow:var(--sombra-1);
+  display:flex;flex-direction:column;gap:.75rem;min-height:9.5rem;color:inherit}
+.colecao .ico{width:2.75rem;height:2.75rem;border-radius:.8rem;display:grid;place-items:center;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.colecao .ico svg{width:1.625rem;height:1.625rem}
+.colecao b{font-size:1.0625rem;font-weight:600;letter-spacing:-.015em;line-height:1.25;color:var(--texto);margin-top:auto}
+.colecao small{color:var(--texto-2);font-size:.8125rem;margin-top:-.5rem}
+.colecoes.menores .colecao{min-height:8rem}
+
+/* ---------- explorador ---------- */
+.explorador{display:grid;grid-template-columns:16.5rem minmax(0,1fr);gap:1.75rem;align-items:start}
+.filtros{position:sticky;top:calc(var(--topo) + env(safe-area-inset-top) + 1rem);background:var(--superficie);border-radius:var(--raio-g);box-shadow:var(--sombra-1);
+  padding:1.25rem;max-height:calc(100vh - var(--topo) - 2rem);overflow:auto;overscroll-behavior:contain;outline:none}
+.filtros h3{font-size:.75rem;margin:1.25rem 0 .5rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-2);font-weight:600}
+.filtros h3:first-of-type{margin-top:0}
+.opcoes{display:flex;flex-wrap:wrap;gap:.375rem}
+.opcoes .chip{font-size:.8125rem;padding:.3125rem .75rem;min-height:1.875rem}
+.filtros-rodape{margin-top:1.25rem;display:flex;gap:.5rem}
+.folha-topo,.veu{display:none}
+.campo,.filtros select,.painel select,.painel input[type=text],.linha-ing input{appearance:none;-webkit-appearance:none;border:0;border-radius:.625rem;
+  background-color:var(--preench);min-height:2.375rem;padding:0 .75rem;font-size:.9375rem;min-width:0;outline:none;transition:box-shadow .2s}
+select.campo,.filtros select,.painel select{padding-right:2rem;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5 6 7.5l3-3' fill='none' stroke='%23927E6A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .625rem center;background-size:.75rem}
+.campo:focus-visible,.filtros select:focus-visible,.painel select:focus-visible,.painel input:focus-visible,.nota-pessoal textarea:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--mel) 45%,transparent)}
+.filtros select{width:100%}
+.barra-res{display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;margin-bottom:1rem}
+.barra-res .cont{font-weight:600;color:var(--texto);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.barra-res .ativos{display:flex;gap:.375rem;flex-wrap:wrap}
+.tag-ativa{background:var(--mel-claro);color:var(--casca-escura);border:0;border-radius:999px;padding:.25rem .625rem;font-size:.8125rem;font-weight:600;cursor:pointer}
+.barra-res .dir{margin-left:auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.btn-filtros{display:none}
+.contador{min-width:1.25rem;height:1.25rem;padding:0 .375rem;border-radius:999px;background:var(--casca);color:var(--tinta);font-size:.6875rem;font-weight:700;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums}
+.contador:empty{display:none}
+.barra-res .campo{font-size:.875rem;min-height:2.25rem}
+@media (max-width:900px){
+  .barra-res .cont{order:-1;flex-basis:100%}
+  .barra-res .ativos{order:3;flex-basis:100%}
+  .barra-res .dir{margin-left:0;flex:1;justify-content:flex-end}
+}
+@media (max-width:560px){.barra-res .dir .rot{display:none}.barra-res .dir .btn{padding:0 .625rem}}
+
+/* folha de filtros no celular: arrastável, com véu que escurece o fundo */
+@media (max-width:900px){
+  .explorador{grid-template-columns:minmax(0,1fr)}
+  .btn-filtros{display:inline-flex}
+  .filtros-rodape{display:none}
+  .veu{display:block;position:fixed;inset:0;z-index:49;background:var(--veu);opacity:0;visibility:hidden}
+  .veu.visivel{visibility:visible}
+  .filtros{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:50;max-height:85vh;max-height:85dvh;border-radius:1.5rem 1.5rem 0 0;box-shadow:var(--sombra-3);
+    padding:0 1.25rem calc(1.5rem + env(safe-area-inset-bottom));visibility:hidden;transform:translate3d(0,110%,0);will-change:transform}
+  .filtros.visivel{visibility:visible}
+  .folha-topo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;position:sticky;top:0;z-index:1;margin:0 -1.25rem .75rem;
+    padding:1.375rem 1.25rem .625rem;background:var(--superficie);touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+  .folha-topo .alca{position:absolute;top:.5rem;left:50%;width:2.25rem;height:.3125rem;margin-left:-1.125rem;border-radius:999px;background:var(--preench-2)}
+  .folha-topo b{grid-column:2;font-size:1.0625rem;font-weight:600;letter-spacing:-.015em}
+  .folha-topo .esq{justify-self:start;font-weight:400}
+  .folha-topo .dir{grid-column:3;justify-self:end}
+}
+
+/* ---------- cards de receita ---------- */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(14rem,100%),1fr));gap:1.125rem}
+.grade .grupo-col{grid-column:1/-1;margin:.5rem 0 -.25rem!important}
+.grade .grupo-col:first-child{margin-top:0!important}
+.card{background:var(--superficie);border-radius:var(--raio-g);box-shadow:var(--sombra-1);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
+  border:0;padding:0;text-align:left;color:inherit;isolation:isolate}
+.card .img{aspect-ratio:4/3;background:var(--superficie-2);position:relative;overflow:hidden}
+.card .img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--suave)}
+.ilustra{width:100%;height:100%;display:grid;place-items:center;color:rgba(255,255,255,.92);position:relative}
+.ilustra svg{width:38%;height:38%}
+.ilustra::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.16) 0 2px,transparent 3px) 0 0/22px 22px}
+.card .marcas{position:absolute;top:.5rem;right:.5rem;display:flex;gap:.25rem}
+.card .marcas span{background:var(--material-chip);-webkit-backdrop-filter:blur(12px) saturate(180%);backdrop-filter:blur(12px) saturate(180%);
+  color:var(--texto);border-radius:999px;font-size:.6875rem;padding:.125rem .5rem;font-weight:600;letter-spacing:.01em}
+.card .corpo{padding:.875rem 1rem 1rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.card h4{font-size:1rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;margin:0;color:var(--texto)}
+.badges{display:flex;flex-wrap:wrap;gap:.3125rem;margin-top:auto}
+.badge{font-size:.6875rem;font-weight:600;border-radius:999px;padding:.1875rem .5rem;background:var(--preench);color:var(--texto-2);letter-spacing:.01em}
+.badge.prog{background:var(--mel-claro);color:var(--casca-escura)}
+.kcal{font-size:.75rem;color:var(--texto-3);font-variant-numeric:tabular-nums}
+.mais{display:flex;justify-content:center;margin-top:1.75rem}
+.vazio{grid-column:1/-1;padding:2.5rem;text-align:center;color:var(--texto-2);background:var(--superficie);border-radius:var(--raio-g)}
+
+/* ---------- ficha da receita ---------- */
+dialog{border:0;padding:0;border-radius:1.75rem;max-width:54rem;width:calc(100% - 2rem);max-height:calc(100vh - 3rem);max-height:calc(100dvh - 3rem);
+  background:var(--superficie);color:var(--texto);box-shadow:var(--sombra-3);overscroll-behavior:contain}
+dialog::backdrop{background:var(--veu);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:var(--p,1)}
+.modal-topo{position:relative;aspect-ratio:16/7;background:var(--superficie-2);overflow:hidden}
+.modal-topo img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+.modal-topo::after{content:"";position:absolute;inset:0 0 auto 0;height:5rem;background:linear-gradient(rgba(0,0,0,.26),transparent);pointer-events:none}
+.modal-topo .fechar{position:absolute;top:.875rem;right:.875rem;z-index:2;width:2rem;height:2rem;color:#fff;
+  background:rgba(30,20,12,.42);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%)}
+.modal-topo .fechar .i{width:1rem;height:1rem;stroke-width:2.4}
+.alca-modal{display:none}
+.modal-corpo{padding:1.5rem 2rem 2.25rem}
+.credito{margin:0 0 1rem;font-size:.75rem;color:var(--texto-2)}
+.rotulo-col{display:block;color:var(--texto-2);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem}
+.modal-corpo h2{font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.08;letter-spacing:-.025em;margin-bottom:.25rem;text-wrap:balance}
+.acoes{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.125rem 0 .5rem}
+#b-fav[aria-pressed="true"]{background:var(--tomate);color:var(--tinta)}
+#b-feito[aria-pressed="true"]{background:var(--ervas);color:var(--tinta)}
+.pop .i{animation:pop .45s var(--suave)}
+@keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.35)}100%{transform:scale(1)}}
+.ficha{font-size:1.0625rem;line-height:1.6}
+.ficha h3{font-size:1.1875rem;font-weight:700;letter-spacing:-.015em;margin:2rem 0 .75rem;color:var(--casca-escura)}
+.ficha ul,.ficha ol{padding-left:1.25em;margin:.5rem 0}
+.ficha li{margin:.375rem 0;padding-left:.125em}
+.ficha ol li::marker{font-weight:700;color:var(--casca);font-variant-numeric:tabular-nums}
+.ficha ul li::marker{color:var(--mel)}
+.ficha blockquote{margin:1rem 0;padding:.875rem 1.125rem;background:var(--superficie-2);border-radius:var(--raio);box-shadow:inset 3px 0 0 var(--mel);font-style:italic;color:var(--texto-2)}
+.ficha blockquote p{margin:.3em 0}
+.ficha .config{background:var(--superficie-2);border-radius:var(--raio);padding:.25rem 1.125rem}
+.ficha .config ul{list-style:none;padding:0;margin:0}
+.ficha .config li{margin:0;padding:.6875rem 0;border-bottom:1px solid var(--separador)}
+.ficha .config li:last-child{border-bottom:0}
+.ficha details{margin-top:1.25rem;color:var(--texto-2);font-size:.875rem}
+.ficha summary{cursor:pointer;font-weight:600}
+.ficha hr{border:0;border-top:1px solid var(--separador);margin:1.75rem 0 .5rem}
+.nota-pessoal{margin-top:1.75rem}
+.nota-pessoal label{display:block;margin-bottom:.5rem;font-weight:600}
+.nota-pessoal label small{color:var(--texto-2);font-weight:400}
+.nota-pessoal textarea{width:100%;min-height:5rem;border:0;border-radius:var(--raio-p);padding:.75rem .875rem;background:var(--preench);resize:vertical;outline:none;line-height:1.5}
+/* no celular a ficha vira uma folha que se arrasta para fechar */
+@media (max-width:760px){
+  dialog.folha{inset:auto 0 0 0;margin:0;width:100%;max-width:none;height:calc(100vh - 2.5rem);height:calc(100dvh - env(safe-area-inset-top) - .75rem);max-height:none;border-radius:1.375rem 1.375rem 0 0}
+  dialog.folha .alca-modal{display:block;position:absolute;top:.5rem;left:50%;width:2.25rem;height:.3125rem;margin-left:-1.125rem;border-radius:999px;background:rgba(255,255,255,.85);z-index:2;pointer-events:none}
+  dialog.folha.no-topo .modal-topo{touch-action:none;cursor:grab}
+  .modal-topo{aspect-ratio:4/3}
+  .modal-corpo{padding:1.25rem 1.25rem calc(2rem + env(safe-area-inset-bottom))}
+}
+
+/* ---------- criador ---------- */
+.criador{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:1.25rem;align-items:start}
+.painel{background:var(--superficie);border-radius:var(--raio-g);box-shadow:var(--sombra-1);padding:1.5rem}
+.rotulo{display:block;font-size:.8125rem;font-weight:600;color:var(--texto-2);margin-bottom:.375rem}
+.campo-largo{width:100%}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0 1.25rem}
+#cr-linhas{margin:.25rem 0 .75rem}
+.linha-ing{display:grid;grid-template-columns:minmax(0,1fr) 4.5rem 10.5rem 2.25rem;gap:.5rem;margin-bottom:.5rem}
+.linha-ing select{background-color:var(--preench)}
+.linha-ing .rem{border:0;background:transparent;cursor:pointer;color:var(--tomate);border-radius:999px;display:grid;place-items:center;min-height:2.375rem;padding:0}
+.nota-medidas{font-size:.8125rem;color:var(--texto-2);margin:1.25rem 0 0;line-height:1.5}
+.resumo{position:sticky;top:calc(var(--topo) + env(safe-area-inset-top) + 1rem)}
+.resumo h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-2);font-weight:600;margin:0 0 .5rem}
+.resumo .grande{font-size:2.75rem;font-weight:700;letter-spacing:-.035em;line-height:1.05;color:var(--casca-escura);font-variant-numeric:tabular-nums;margin-bottom:.75rem}
+.resumo dl{display:grid;grid-template-columns:1fr auto;margin:0}
+.resumo dt,.resumo dd{padding:.5625rem 0;border-bottom:1px solid var(--separador);font-size:.9375rem}
+.resumo dt{color:var(--texto-2)}
+.resumo dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;padding-left:.75rem}
+.resumo dt:last-of-type,.resumo dd:last-of-type{border-bottom:0}
+.alerta,.ok{display:flex;gap:.5rem;align-items:flex-start;border-radius:var(--raio-p);padding:.625rem .75rem;font-size:.875rem;line-height:1.45;margin-top:.625rem}
+.alerta{background:color-mix(in srgb,var(--tomate) 13%,transparent);color:color-mix(in srgb,var(--tomate) 72%,var(--texto))}
+.ok{background:color-mix(in srgb,var(--ervas) 14%,transparent);color:color-mix(in srgb,var(--ervas) 70%,var(--texto))}
+.alerta .i,.ok .i{margin-top:.125rem}
+@media (max-width:900px){.criador{grid-template-columns:1fr}.resumo{position:static}}
+@media (max-width:560px){
+  .grade-2{grid-template-columns:1fr}
+  .linha-ing{grid-template-columns:4.75rem 1fr 2.25rem;margin-bottom:.875rem}
+  .linha-ing [data-c="ing"]{grid-column:1/3}
+  .linha-ing .rem{grid-column:3;grid-row:1}
+  .linha-ing [data-c="q"]{grid-column:1}
+  .linha-ing [data-c="u"]{grid-column:2/4}
+}
+
+/* ---------- dicas: lista agrupada com divulgação ---------- */
+.dicas{background:var(--superficie);border-radius:var(--raio-g);box-shadow:var(--sombra-1);overflow:hidden}
+.dica{border-bottom:1px solid var(--separador)}
+.dica:last-child{border-bottom:0}
+.dica>summary{list-style:none;cursor:pointer;padding:1.125rem 1.375rem;font-size:1.0625rem;font-weight:600;letter-spacing:-.015em;color:var(--texto);
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background-color .2s}
+.dica>summary::-webkit-details-marker{display:none}
+.dica>summary::after{content:"";width:.75rem;height:.75rem;flex:none;background:var(--texto-3);transition:transform .35s var(--suave);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.dica[open]>summary::after{transform:rotate(90deg)}
+@media (hover:hover){.dica>summary:hover{background:var(--preench)}}
+.dica .conteudo{padding:0 1.375rem 1.25rem;color:var(--texto);max-width:46em;line-height:1.6}
+.dica .conteudo p{margin:.5em 0}
+@media (prefers-reduced-motion:no-preference){@supports (interpolate-size:allow-keywords){
+  .dicas{interpolate-size:allow-keywords}
+  .dica::details-content{height:0;overflow:clip;transition:height .4s var(--suave),content-visibility .4s allow-discrete}
+  .dica[open]::details-content{height:auto}
+}}
+
+/* ---------- programas ---------- */
+.rolagem{overflow-x:auto;border-radius:var(--raio-g);box-shadow:var(--sombra-1)}
+.tabela{width:100%;border-collapse:separate;border-spacing:0;background:var(--superficie);font-size:.9375rem}
+.tabela th,.tabela td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--separador);vertical-align:top}
+.tabela th{background:var(--superficie-2);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--texto-2);white-space:nowrap}
+.tabela td:first-child{font-variant-numeric:tabular-nums}
+.tabela tr:last-child td{border-bottom:0}
+.tabela button{border:0;background:var(--mel-claro);color:var(--casca-escura);font-weight:700;cursor:pointer;border-radius:999px;min-width:2.25rem;padding:.1875rem .625rem;font-variant-numeric:tabular-nums}
+footer{padding:2.5rem 0 calc(3rem + env(safe-area-inset-bottom));color:var(--texto-2);font-size:.8125rem;line-height:1.55;border-top:1px solid var(--separador);margin-top:2rem}
+footer b{color:var(--texto)}
+
+/* ---------- troca de tema sem salto brusco de brilho ---------- */
+.trocando-tema,.trocando-tema *,.trocando-tema *::before,.trocando-tema *::after{
+  transition:background-color .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease,fill .45s ease!important}
+
+/* ---------- acessibilidade: movimento, transparência, contraste ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}
+  .vapor path{animation:none;opacity:.35}
+  .card,.colecao,.card .img img{transition-property:box-shadow,opacity!important}
+  .card:hover,.colecao:hover,.card:hover .img img,.btn:active,.chip:active,.btn-icone:active,.tag-ativa:active,.card:active,.colecao:active{transform:none!important}
+  .btn:active,.chip:active,.btn-icone:active,.tag-ativa:active,.card:active,.colecao:active{opacity:.72}
+  .filtros,.veu{transition:opacity .2s ease}
+  .filtros:not(.mostrar),.veu:not(.mostrar){opacity:0}
+  .veu.mostrar{opacity:1}
+}
+@media (prefers-reduced-transparency:reduce){
+  header.topo{background:var(--fundo);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .card .marcas span{background:var(--superficie);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .modal-topo .fechar{background:rgba(30,20,12,.85);-webkit-backdrop-filter:none;backdrop-filter:none}
+  dialog::backdrop{-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@media (prefers-contrast:more){
+  :root:not(#_){--texto-2:color-mix(in srgb,var(--texto) 88%,transparent);--texto-3:color-mix(in srgb,var(--texto) 72%,transparent);--separador:color-mix(in srgb,var(--texto) 40%,transparent)}
+  header.topo{background:var(--fundo);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 1px 0 var(--separador)}
+  .card,.colecao,.painel,.filtros,.dicas,.rolagem,dialog,.busca,.chip,.btn.fantasma,.btn.sec{outline:1px solid var(--separador);outline-offset:-1px}
+}
+
+@media print{
+  body>*:not(dialog){display:none!important}
+  dialog{position:static;box-shadow:none;max-height:none;width:100%;max-width:none;height:auto!important;transform:none!important;opacity:1!important}
+  .acoes,.fechar,.nota-pessoal,.alca-modal,.modal-topo::after{display:none!important}
+  .modal-topo{aspect-ratio:auto;max-height:220px}
+  .ficha details{display:block}
+}
+</style>
+</head>
+<body>
+<header class="topo" id="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Miolo & Casca, início">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 34c0-14 12-23 26-23s26 9 26 23v13a7 7 0 0 1-7 7H13a7 7 0 0 1-7-7z" fill="#C8894B"/><path d="M6 34c0-14 12-23 26-23s26 9 26 23" fill="none" stroke="#8B5A2B" stroke-width="3"/><path d="M19 24l5 9M30 21l3 10M41 24l4 8" stroke="#F6E7B4" stroke-width="3.5" stroke-linecap="round"/></svg>
+      <span>Miolo <span class="amp">&amp;</span> Casca<small>Pães caseiros · Mondial NPF-54</small></span>
+    </a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#colecoes">Coleções</a><a href="#receitas">Receitas</a><a href="#criar">Criar receita</a><a href="#dicas">Dicas</a><a href="#programas">Programas NPF-54</a>
+    </nav>
+    <button class="btn-icone" id="tema" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="heroi">
+    <div class="wrap">
+      <div>
+        <h1>O que vamos <em>assar</em> hoje?</h1>
+        <p class="sub">Receitas de pães, bolos, massas e geleias feitas na máquina de pão, todas ajustadas para a sua <b>Mondial NPF-54</b>: programa, peso e cor da casca já indicados.</p>
+        <form class="busca" role="search" onsubmit="event.preventDefault();irParaReceitas()">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+          <label class="sr" for="q">Buscar receita ou ingrediente</label>
+          <input id="q" type="search" placeholder="Nome ou ingrediente: banana, centeio, queijo…" autocomplete="off" enterkeyhint="search">
+          <button class="btn" type="submit">Buscar</button>
+        </form>
+        <div class="atalhos" id="atalhos"></div>
+        <div class="numeros" id="numeros"></div>
+      </div>
+      <div class="pao-heroi" aria-hidden="true">
+        <svg viewBox="0 0 300 300">
+          <g class="vapor" fill="none" stroke="#C9B49A" stroke-width="5" stroke-linecap="round">
+            <path d="M110 70c-12-14 12-22 0-38"/><path d="M150 62c-12-14 12-22 0-38"/><path d="M190 70c-12-14 12-22 0-38"/>
+          </g>
+          <ellipse cx="150" cy="262" rx="120" ry="14" fill="#5B3A1E" opacity=".15"/>
+          <rect x="30" y="238" width="240" height="20" rx="10" fill="#B5523B" opacity=".85"/>
+          <path d="M40 176c0-60 50-96 110-96s110 36 110 96v44a18 18 0 0 1-18 18H58a18 18 0 0 1-18-18z" fill="#D39A58"/>
+          <path d="M40 176c0-60 50-96 110-96s110 36 110 96" fill="none" stroke="#8B5A2B" stroke-width="6"/>
+          <path d="M52 170c4-46 46-76 98-76s94 30 98 76" fill="#E8B878" opacity=".55"/>
+          <path d="M92 118l16 32M142 104l10 36M192 112l14 32" stroke="#FCEBC4" stroke-width="10" stroke-linecap="round"/>
+          <path d="M70 212h160" stroke="#8B5A2B" stroke-width="3" opacity=".25" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="colecoes">
+    <div class="wrap">
+      <div class="titulo-secao"><div><h2>Coleções</h2><p>Escolha por onde começar. Cada coleção abre as receitas filtradas.</p></div></div>
+      <h3 class="grupo-col">Pães</h3>
+      <div class="colecoes" id="lista-colecoes"></div>
+      <h3 class="grupo-col">Outros produtos da máquina</h3>
+      <div class="colecoes" id="lista-colecoes-outros"></div>
+    </div>
+  </section>
+
+  <section id="receitas">
+    <div class="wrap">
+      <div class="titulo-secao"><div><h2>Receitas</h2><p>Toque em uma receita para ver a ficha completa.</p></div></div>
+      <div class="explorador">
+        <aside class="filtros" id="filtros" aria-label="Filtros" tabindex="-1">
+          <div class="folha-topo"><span class="alca" aria-hidden="true"></span><button class="btn-texto esq" type="button" onclick="limparFiltros()">Limpar</button><b>Filtros</b><button class="btn-texto dir" type="button" onclick="toggleFiltros(false)">OK</button></div>
+          <h3>Coleção</h3><div class="opcoes" data-f="c"></div>
+          <h3>Programa da NPF-54</h3><label class="sr" for="f-prog">Programa</label><select id="f-prog"><option value="">Todos os programas</option></select>
+          <h3>Peso</h3><div class="opcoes" data-f="kg"></div>
+          <h3>Cor da casca</h3><div class="opcoes" data-f="cor"></div>
+          <h3>Restrições</h3><div class="opcoes" data-f="dieta"></div>
+          <h3>Meus pães</h3><div class="opcoes" data-f="meus"></div>
+          <div class="filtros-rodape"><button class="btn fantasma pequeno" type="button" onclick="limparFiltros()">Limpar filtros</button></div>
+        </aside>
+        <div>
+          <div class="barra-res">
+            <button class="btn fantasma pequeno btn-filtros" type="button" onclick="toggleFiltros(true)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></svg>Filtros<span class="contador" id="n-filtros"></span></button>
+            <span class="cont" id="contagem"></span>
+            <span class="ativos" id="ativos"></span>
+            <span class="dir">
+              <button class="btn fantasma pequeno" type="button" onclick="surpresa()" title="Abrir uma receita aleatória entre as filtradas" aria-label="Surpreenda-me: abrir uma receita aleatória"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4.5"/><g fill="currentColor" stroke="none"><circle cx="9" cy="9" r="1.25"/><circle cx="15" cy="9" r="1.25"/><circle cx="9" cy="15" r="1.25"/><circle cx="15" cy="15" r="1.25"/></g></svg><span class="rot">Surpreenda-me</span></button>
+              <label class="sr" for="ordem">Ordenar</label>
+              <select id="ordem" class="campo">
+                <option value="foto">Com foto primeiro</option><option value="az">A–Z</option><option value="rec">Mais recentes</option><option value="k-">Menos kcal/100 g</option><option value="k+">Mais kcal/100 g</option>
+              </select>
+            </span>
+          </div>
+          <div class="grade" id="grade"></div>
+          <div class="mais"><button class="btn sec" id="btn-mais" type="button">Mostrar mais receitas</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="criar">
+    <div class="wrap">
+      <div class="titulo-secao"><div><h2>Crie sua receita</h2><p>Monte uma receita nova, veja calorias, peso e a configuração sugerida para a NPF-54 e baixe a ficha em Markdown.</p></div>
+        <div class="acoes-cab"><button class="btn sec pequeno" type="button" onclick="carregarBase()">Começar de um pão básico</button><button class="btn fantasma pequeno" type="button" onclick="novoRascunho()">Limpar</button></div></div>
+      <div class="criador">
+        <div class="painel">
+          <label class="rotulo" for="cr-nome">Nome da receita</label>
+          <input type="text" id="cr-nome" class="campo-largo" placeholder="Ex.: Pão de aveia com mel">
+          <div class="grade-2">
+            <label><span class="rotulo">Programa</span><select id="cr-prog" class="campo-largo"></select></label>
+            <label><span class="rotulo">Como vai assar</span><select id="cr-modo" class="campo-largo">
+              <option value="maq">Na máquina (−11%)</option><option value="forno">Massa na máquina, forno/airfryer (−17,5%)</option><option value="nao">Sem assar (geleia, massa crua…)</option></select></label>
+          </div>
+          <span class="rotulo">Ingredientes</span>
+          <datalist id="lista-ing"></datalist>
+          <div id="cr-linhas"></div>
+          <button class="btn sec pequeno" type="button" onclick="addLinha()"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5v13M5.5 12h13"/></svg>Ingrediente</button>
+          <p class="nota-medidas">Medidas: xícara 240 ml, colher de sopa 15 ml, colher de chá 5 ml. Energia pela TACO e USDA, as mesmas fontes das fichas.</p>
+        </div>
+        <div class="painel resumo" aria-live="polite">
+          <h3>Resultado</h3>
+          <div id="cr-resumo"></div>
+          <div class="acoes-cab" style="margin-top:1.25rem"><button class="btn" type="button" onclick="baixarFicha()"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg>Baixar ficha .md</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dicas">
+    <div class="wrap">
+      <div class="titulo-secao"><div><h2>Dicas para pães perfeitos</h2><p>Os guias do site original e as orientações do manual da sua máquina.</p></div></div>
+      <div class="dicas" id="lista-dicas"></div>
+    </div>
+  </section>
+
+  <section id="programas">
+    <div class="wrap">
+      <div class="titulo-secao"><div><h2>Programas da NPF-54</h2><p>Os 19 programas do manual e quantas receitas usam cada um. Toque no número para filtrar.</p></div></div>
+      <div class="rolagem"><table class="tabela" id="tab-prog"></table></div>
+    </div>
+  </section>
+</main>
+
+<div class="veu" id="veu" onclick="toggleFiltros(false)" aria-hidden="true"></div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Miolo &amp; Casca</b> é um projeto pessoal para uso local. As receitas foram adaptadas de maquinadepao.com.br para a Mondial NPF-54 (pesos 500, 750 e 1000 g; cores Clara e Média).</p>
+    <p>Calorias e pesos são estimativas: TACO 4ª ed. (NEPA/UNICAMP), USDA FoodData Central e rótulos quando indicado em cada ficha. Favoritos, "já fiz" e notas ficam salvos apenas neste navegador.</p>
+  </div>
+</footer>
+
+<dialog id="modal" aria-labelledby="m-titulo"></dialog>
+
+<script src="dados.js"></script>
+<script>
+"use strict";
+const D = window.DADOS, R = D.receitas, PROG = D.programas;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const semAcento = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => Math.round(n).toLocaleString("pt-BR");
+
+/* armazenamento local (favoritos, já fiz, notas, tema, rascunho) */
+const guardar = {
+  ler(k, pad) { try { const v = localStorage.getItem("miolo:" + k); return v ? JSON.parse(v) : pad; } catch (e) { return pad; } },
+  gravar(k, v) { try { localStorage.setItem("miolo:" + k, JSON.stringify(v)); } catch (e) {} }
+};
+let favoritos = new Set(guardar.ler("fav", [])), feitos = new Set(guardar.ler("feito", [])), notas = guardar.ler("notas", {});
+
+/* tema */
+const temaSalvo = guardar.ler("tema", null);
+if (temaSalvo) document.documentElement.dataset.tema = temaSalvo;
+const ICO = {coracao:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg>',check:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',imprimir:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V4.5h10V9"/><rect x="3.5" y="9" width="17" height="8" rx="2.5"/><path d="M7 14h10v6H7z"/></svg>',copiar:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.5"/><path d="M15.5 8.5V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7.5a2 2 0 0 0 2 2h2.5"/></svg>',arquivo:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5H7.5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V8z"/><path d="M14 3.5V8h4.5"/></svg>',fechar:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',alerta:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 4.9 2.9 17.8A2 2 0 0 0 4.6 20.8h14.8a2 2 0 0 0 1.7-3L13.7 4.9a2 2 0 0 0-3.4 0z"/><path d="M12 10v4M12 17.3v.1"/></svg>',ok:'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.3 12.3 2.6 2.6 4.8-5"/></svg>'};
+/* ======================================================================
+   Movimento fluido: molas interrompíveis (amortecimento + resposta),
+   arrasto 1:1 com histórico de velocidade, projeção de momento e
+   elástico nas bordas — tudo partindo do valor que está na tela.
+   ====================================================================== */
+const reduzMov = matchMedia("(prefers-reduced-motion: reduce)");
+document.addEventListener("touchstart", () => {}, {passive: true}); // ativa :active no iOS (retorno no toque)
+
+function criarValor(x, aplicar) { return {x, v: 0, raf: 0, alvo: x, cfg: {}, aplicar}; }
+/* amortecimento 1 = sem ultrapassar; < 1 = leve quique. resposta (s) = rapidez, não duração. */
+function mola(val, alvo, cfg = {}) {
+  cancelAnimationFrame(val.raf);
+  const {amortecimento = 1, resposta = .35, velocidade, eps = .5, fim} = cfg;
+  if (velocidade !== undefined) val.v = velocidade;          // herda a velocidade do dedo
+  val.alvo = alvo; val.cfg = {amortecimento, resposta, eps, fim};
+  const w = 2 * Math.PI / resposta, k = w * w, c = 2 * amortecimento * w;
+  let t0 = performance.now();
+  const passo = agora => {
+    const dt = Math.min((agora - t0) / 1000, .1); t0 = agora;          // subpassos de 1/240 s mantêm a mola estável
+    const n = Math.max(1, Math.ceil(dt * 240)), h = dt / n;
+    for (let i = 0; i < n; i++) { const a = -k * (val.x - alvo) - c * val.v; val.v += a * h; val.x += val.v * h; }
+    if (Math.abs(val.x - alvo) < eps && Math.abs(val.v) < eps * 12) {
+      val.x = alvo; val.v = 0; val.raf = 0; val.aplicar(val.x); fim && fim(); return;
+    }
+    val.aplicar(val.x); val.raf = requestAnimationFrame(passo);
+  };
+  val.raf = requestAnimationFrame(passo);
+}
+function parar(val) { cancelAnimationFrame(val.raf); val.raf = 0; }   // mantém x e v: o próximo movimento parte daqui
+function retomar(val) { if (val.x !== val.alvo || val.v) mola(val, val.alvo, val.cfg); }
+const projetar = (v, d = .998) => (v / 1000) * d / (1 - d);            // onde o gesto “quer” parar
+const elastico = (excesso, dim, c = .55) => (excesso * dim * c) / (dim + c * Math.abs(excesso));
+
+/* arrasto vertical: limiar de 8 px, depois acompanha o dedo 1:1 */
+function ligarArrasto(el, {pode, inicio, mover, soltar}) {
+  let id = null, y0 = 0, base = 0, ativo = false, hist = [], suprimir = false;
+  el.addEventListener("pointerdown", e => {
+    if (id !== null || e.button > 0 || !pode(e)) return;
+    id = e.pointerId; y0 = e.clientY; ativo = false; hist = [[e.timeStamp, e.clientY]];
+    base = inicio();
+  });
+  el.addEventListener("pointermove", e => {
+    if (e.pointerId !== id) return;
+    if (!ativo) {
+      if (Math.abs(e.clientY - y0) < 8) return;
+      ativo = true; y0 = e.clientY; try { el.setPointerCapture(id); } catch (_) {}
+    }
+    hist.push([e.timeStamp, e.clientY]);
+    while (hist.length > 2 && e.timeStamp - hist[0][0] > 100) hist.shift();
+    mover(base + e.clientY - y0);
+  });
+  const terminar = e => {
+    if (e.pointerId !== id) return;
+    id = null;
+    if (!ativo) { soltar(false, 0); return; }
+    suprimir = true; setTimeout(() => suprimir = false, 0);
+    const [ta, ya] = hist[0], [tb, yb] = hist[hist.length - 1];
+    let v = tb > ta ? (yb - ya) / (tb - ta) * 1000 : 0;
+    if (e.type === "pointercancel" || e.timeStamp - tb > 80) v = 0;   // dedo parou antes de soltar
+    soltar(true, v);
+  };
+  el.addEventListener("pointerup", terminar);
+  el.addEventListener("pointercancel", terminar);
+  el.addEventListener("click", e => { if (suprimir) { e.stopPropagation(); e.preventDefault(); } }, true);
+}
+
+/* ---------- barra superior: borda de rolagem e “onde estou” ---------- */
+(() => {
+  const topo = $("#topo"); let pend = false;
+  const atualizar = () => { pend = false; topo.classList.toggle("rolou", scrollY > 4); };
+  addEventListener("scroll", () => { if (!pend) { pend = true; requestAnimationFrame(atualizar); } }, {passive: true});
+  atualizar();
+  const links = $$("nav.menu a");
+  const obs = new IntersectionObserver(ents => {
+    for (const en of ents) if (en.isIntersecting)
+      links.forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + en.target.id));
+  }, {rootMargin: "-45% 0px -50% 0px"});
+  ["colecoes", "receitas", "criar", "dicas", "programas"].forEach(id => obs.observe(document.getElementById(id)));
+  new IntersectionObserver(([en]) => { if (en.isIntersecting) links.forEach(a => a.setAttribute("aria-current", "false")); },
+    {rootMargin: "-45% 0px -50% 0px"}).observe($(".heroi"));
+})();
+
+/* ---------- tema: troca suave, sem salto de brilho ---------- */
+$("#tema").onclick = () => {
+  const raiz = document.documentElement;
+  const escuro = raiz.dataset.tema ? raiz.dataset.tema === "escuro" : matchMedia("(prefers-color-scheme: dark)").matches;
+  raiz.classList.add("trocando-tema");
+  raiz.dataset.tema = escuro ? "claro" : "escuro";
+  guardar.gravar("tema", raiz.dataset.tema);
+  setTimeout(() => raiz.classList.remove("trocando-tema"), 500);
+};
+
+/* ---------- folha de filtros (celular) ---------- */
+const filtrosEl = $("#filtros"), veu = $("#veu"), mqFolha = matchMedia("(max-width:900px)");
+const folha = {aberta: false};
+const alturaFolha = () => filtrosEl.offsetHeight + 24;
+const posF = criarValor(0, y => {
+  filtrosEl.style.transform = `translate3d(0,${y}px,0)`;
+  if (!reduzMov.matches) veu.style.opacity = Math.max(0, Math.min(1, 1 - y / alturaFolha()));
+});
+function toggleFiltros(abrir, {velocidade} = {}) {
+  if (!mqFolha.matches) return;
+  folha.aberta = abrir;
+  document.documentElement.classList.toggle("folha-aberta", abrir);
+  const esconder = () => { if (!folha.aberta) { filtrosEl.classList.remove("visivel"); veu.classList.remove("visivel"); } };
+  if (abrir) { filtrosEl.classList.add("visivel"); veu.classList.add("visivel"); filtrosEl.focus({preventScroll: true}); }
+  else if (filtrosEl.contains(document.activeElement)) $(".barra-res .btn-filtros").focus({preventScroll: true});
+  if (reduzMov.matches) {                                  // movimento reduzido: só esmaecer
+    parar(posF); posF.x = 0; posF.aplicar(0);
+    requestAnimationFrame(() => { filtrosEl.classList.toggle("mostrar", abrir); veu.classList.toggle("mostrar", abrir); });
+    if (!abrir) setTimeout(() => { esconder(); if (!folha.aberta) { posF.x = alturaFolha(); posF.aplicar(posF.x); } }, 220);
+    return;
+  }
+  mola(posF, abrir ? 0 : alturaFolha(), {
+    velocidade, resposta: .32, amortecimento: velocidade ? .8 : 1, // quique só quando houve impulso do dedo
+    fim: esconder
+  });
+}
+function iniciarFolha() {
+  parar(posF); folha.aberta = false; document.documentElement.classList.remove("folha-aberta");
+  filtrosEl.classList.remove("visivel", "mostrar"); veu.classList.remove("visivel", "mostrar");
+  if (mqFolha.matches) { posF.x = alturaFolha(); posF.v = 0; posF.aplicar(posF.x); }
+  else { filtrosEl.style.transform = ""; veu.style.opacity = ""; }
+}
+mqFolha.addEventListener("change", iniciarFolha);
+ligarArrasto($(".folha-topo"), {
+  pode: e => mqFolha.matches && folha.aberta && !e.target.closest("button"),
+  inicio: () => { parar(posF); return posF.x; },
+  mover: y => { posF.x = y < 0 ? elastico(y, alturaFolha()) : y; posF.aplicar(posF.x); },
+  soltar: (arrastou, v) => {
+    if (!arrastou) return retomar(posF);
+    toggleFiltros(posF.x + projetar(v) < alturaFolha() * .5, {velocidade: v});
+  }
+});
+addEventListener("keydown", e => { if (e.key === "Escape" && folha.aberta) toggleFiltros(false); });
+
+/* ---------- ficha: surge do card tocado; no celular é uma folha arrastável ---------- */
+const modal = $("#modal"), mqModal = matchMedia("(max-width:760px)");
+let escalaOrigem = .9;
+const alturaModal = () => modal.offsetHeight || innerHeight;
+const posModal = criarValor(0, y => {
+  modal.style.transform = `translate3d(0,${y}px,0)`;
+  modal.style.setProperty("--p", Math.max(0, Math.min(1, 1 - y / alturaModal())));
+});
+const progModal = criarValor(0, p => {
+  const s = reduzMov.matches ? 1 : escalaOrigem + (1 - escalaOrigem) * p;
+  modal.style.transform = s === 1 ? "" : `scale(${s})`;
+  modal.style.opacity = Math.min(1, Math.max(0, p * 1.8));
+  modal.style.setProperty("--p", Math.max(0, Math.min(1, p)));
+});
+function entrarModal(origem) {
+  modal.classList.toggle("folha", mqModal.matches);
+  modal.classList.add("no-topo");
+  if (mqModal.matches && !reduzMov.matches) {
+    posModal.x = alturaModal(); posModal.v = 0; posModal.aplicar(posModal.x);
+    mola(posModal, 0, {resposta: .38});
+    return;
+  }
+  const mr = modal.getBoundingClientRect();
+  const ok = origem && origem !== document.body && origem.getBoundingClientRect && !modal.contains(origem);
+  const or = ok ? origem.getBoundingClientRect() : null;
+  const cx = or ? or.left + or.width / 2 : mr.left + mr.width / 2, cy = or ? or.top + or.height / 2 : mr.top + mr.height * .35;
+  escalaOrigem = or ? Math.min(.85, Math.max(.3, or.width / mr.width)) : .94;
+  modal.style.transformOrigin = `${cx - mr.left}px ${cy - mr.top}px`;   // ancorada no elemento que a abriu
+  progModal.x = 0; progModal.v = 0; progModal.aplicar(0);
+  mola(progModal, 1, {resposta: reduzMov.matches ? .25 : .42, eps: .002});
+}
+function fecharModal(velocidade = 0) {
+  if (!modal.open) return;
+  if (modal.classList.contains("folha") && !reduzMov.matches)
+    mola(posModal, alturaModal(), {velocidade, resposta: .32, fim: () => modal.close()});
+  else mola(progModal, 0, {resposta: reduzMov.matches ? .2 : .34, eps: .002, fim: () => modal.close()}); // volta pelo mesmo caminho
+}
+modal.addEventListener("cancel", e => { e.preventDefault(); fecharModal(); });
+modal.addEventListener("click", e => { if (e.target === modal) fecharModal(); });
+modal.addEventListener("scroll", () => modal.classList.toggle("no-topo", modal.scrollTop <= 1), {passive: true});
+modal.addEventListener("close", () => {
+  parar(posModal); parar(progModal);
+  modal.style.transform = modal.style.opacity = modal.style.transformOrigin = ""; modal.style.removeProperty("--p");
+  modal.classList.remove("folha");
+  history.replaceState(null, "", location.pathname + location.search);
+});
+modal.addEventListener("dragstart", e => { if (e.target.closest(".modal-topo")) e.preventDefault(); });
+ligarArrasto(modal, {
+  pode: e => modal.classList.contains("folha") && !reduzMov.matches && modal.scrollTop <= 1 && e.target.closest(".modal-topo") && !e.target.closest("button"),
+  inicio: () => { parar(posModal); return posModal.x; },
+  mover: y => { posModal.x = y < 0 ? elastico(y, alturaModal()) : y; posModal.aplicar(posModal.x); },
+  soltar: (arrastou, v) => {
+    if (!arrastou) return retomar(posModal);
+    if (posModal.x + projetar(v) > alturaModal() * .4) fecharModal(v);
+    else mola(posModal, 0, {velocidade: v, amortecimento: .8, resposta: .3});
+  }
+});
+
+
+/* coleções: cor e ilustração */
+const COL = {
+  "paes-do-dia-a-dia": ["#C8894B", '<path d="M4 15c0-6 4-10 12-10s12 4 12 10v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" fill="currentColor"/><path d="M10 10l2 4M16 9l1 5M22 10l1 4" stroke="#0003" stroke-width="1.6" stroke-linecap="round"/>'],
+  "integrais-e-graos": ["#8A6A3B", '<path d="M16 29V9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><g fill="currentColor"><ellipse cx="12.5" cy="11" rx="2.4" ry="4" transform="rotate(-30 12.5 11)"/><ellipse cx="19.5" cy="11" rx="2.4" ry="4" transform="rotate(30 19.5 11)"/><ellipse cx="12.5" cy="17" rx="2.4" ry="4" transform="rotate(-30 12.5 17)"/><ellipse cx="19.5" cy="17" rx="2.4" ry="4" transform="rotate(30 19.5 17)"/><ellipse cx="12.5" cy="23" rx="2.4" ry="4" transform="rotate(-30 12.5 23)"/><ellipse cx="19.5" cy="23" rx="2.4" ry="4" transform="rotate(30 19.5 23)"/><ellipse cx="16" cy="6" rx="2.2" ry="3.6"/></g>'],
+  "doces-e-festivos": ["#D9785B", '<path d="M16 5l3 6 6.5 1-4.7 4.6 1.1 6.4L16 20l-5.9 3 1.1-6.4L6.5 12l6.5-1z" fill="currentColor"/><circle cx="7" cy="26" r="2" fill="currentColor"/><circle cx="25" cy="26" r="2" fill="currentColor"/><circle cx="16" cy="27" r="1.6" fill="currentColor"/>'],
+  "salgados-e-temperados": ["#7A8F4E", '<path d="M5 22l20-12v14H5z" fill="currentColor"/><circle cx="17" cy="19" r="1.8" fill="#0003"/><circle cx="21" cy="21" r="1.3" fill="#0003"/><circle cx="13" cy="21.5" r="1.1" fill="#0003"/><path d="M22 7c2-3 5-3 6-2-1 2-3 4-6 2z" fill="currentColor"/>'],
+  "modelados": ["#B8763E", '<path d="M6 20c0-4 3-6 6-6s4 2 4 2 1-2 4-2 6 2 6 6-3 6-6 6-4-2-4-2-1 2-4 2-6-2-6-6z" fill="currentColor"/><path d="M11 17c2 2 2 5 0 7M21 17c-2 2-2 5 0 7M16 15v12" stroke="#0003" stroke-width="1.5" fill="none" stroke-linecap="round"/>'],
+  "massas-e-salgadinhos": ["#C0553A", '<path d="M16 4L28 26H4z" fill="currentColor"/><path d="M16 4L28 26" stroke="#0002" stroke-width="3"/><circle cx="14" cy="17" r="2" fill="#0003"/><circle cx="19" cy="21" r="2" fill="#0003"/><circle cx="12" cy="23" r="1.5" fill="#0003"/>'],
+  "bolos": ["#B7707A", '<path d="M5 17h22v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" fill="currentColor"/><path d="M5 17c2 2 4 2 5.5 0S14 15 16 17s4 2 5.5 0 3.5-2 5.5 0" stroke="#fff8" stroke-width="2" fill="none"/><path d="M16 8v6" stroke="currentColor" stroke-width="2"/><path d="M16 4c1.5 1.5 1.5 3 0 4-1.5-1-1.5-2.5 0-4z" fill="currentColor"/>'],
+  "geleias-e-compotas": ["#9E3F4F", '<rect x="8" y="10" width="16" height="18" rx="4" fill="currentColor"/><rect x="7" y="6" width="18" height="5" rx="1.5" fill="currentColor" opacity=".8"/><path d="M11 18h10" stroke="#fff6" stroke-width="2" stroke-linecap="round"/>'],
+  "alem-do-pao": ["#7C6A58", '<path d="M4 14h24v4a10 10 0 0 1-10 10h-4A10 10 0 0 1 4 18z" fill="currentColor"/><path d="M2 14h28" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M12 10c-2-2 2-3 0-6M20 10c-2-2 2-3 0-6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>'],
+  "sem-gluten": ["#5E8C7A", '<circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2.4" fill="none"/><path d="M16 26V11" stroke="currentColor" stroke-width="1.8"/><ellipse cx="13.5" cy="14" rx="1.8" ry="3" fill="currentColor" transform="rotate(-30 13.5 14)"/><ellipse cx="18.5" cy="14" rx="1.8" ry="3" fill="currentColor" transform="rotate(30 18.5 14)"/><ellipse cx="13.5" cy="19" rx="1.8" ry="3" fill="currentColor" transform="rotate(-30 13.5 19)"/><ellipse cx="18.5" cy="19" rx="1.8" ry="3" fill="currentColor" transform="rotate(30 18.5 19)"/><path d="M7.5 7.5l17 17" stroke="currentColor" stroke-width="2.4"/>'],
+  "paes-especiais": ["#A0782E", '<path d="M16 3l2.4 5.2 5.6.6-4.2 3.8 1.2 5.6L16 15.4 11 18.2l1.2-5.6L8 8.8l5.6-.6z" fill="currentColor"/><path d="M5 25c0-4 5-6 11-6s11 2 11 6v1a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" fill="currentColor"/>']
+};
+const svgCol = (c, cls = "") => `<svg viewBox="0 0 32 32" aria-hidden="true" class="${cls}">${COL[c][1]}</svg>`;
+const nomeCol = Object.fromEntries(D.colecoes.map(c => [c.id, c.nome]));
+const pao = Object.fromEntries(D.colecoes.map(c => [c.id, c.pao]));
+const ilustracao = r => `<div class="ilustra" style="background:linear-gradient(135deg,${COL[r.c][0]},color-mix(in srgb,${COL[r.c][0]} 70%,#3B2A1E))">${svgCol(r.c)}</div>`;
+const imagem = r => r.foto ? `<img src="fotos/${r.id}.jpg" alt="" loading="lazy">` : ilustracao(r);
+
+/* estado dos filtros */
+const DIETAS = {"Sem Glúten": "Sem glúten", "Sem Lactose": "Sem lactose", "Light e Diet": "Light e diet"};
+const st = {q: "", c: new Set(), prog: "", kg: new Set(), cor: new Set(), dieta: new Set(), meus: new Set(), ordem: "foto", limite: 24};
+
+function montarFiltros() {
+  const cont = k => R.filter(k).length;
+  const blocos = {
+    c: D.colecoes.map(c => [c.id, c.nome, cont(r => r.c === c.id)]),
+    kg: [500, 750, 1000].map(p => [String(p), p + " g", cont(r => r.kg === p)]),
+    cor: ["Clara", "Média"].map(c => [c, c, cont(r => r.cor === c)]),
+    dieta: Object.entries(DIETAS).map(([k, n]) => [k, n, cont(r => r.cats.includes(k))]),
+    meus: [["fav", "♥ Favoritos"], ["feito", "✓ Já fiz"], ["foto", "Com foto própria"]].map(([k, n]) => [k, n, null])
+  };
+  for (const [f, itens] of Object.entries(blocos)) {
+    $(`.opcoes[data-f="${f}"]`).innerHTML = itens.map(([v, n, q]) =>
+      `<button type="button" class="chip" data-f="${f}" data-v="${esc(v)}" aria-pressed="false">${esc(n)}${q != null ? ` <small>${q}</small>` : ""}</button>`).join("");
+  }
+  const progsUsados = [...new Set(R.map(r => r.p).filter(Boolean))].sort((a, b) => a - b);
+  $("#f-prog").innerHTML += progsUsados.map(n => `<option value="${n}">${n} – ${PROG[n].nome}</option>`).join("");
+  $("#f-prog").onchange = e => { st.prog = e.target.value; aplicar(); };
+  $$(".filtros .chip").forEach(b => b.onclick = () => { const s = st[b.dataset.f]; s.has(b.dataset.v) ? s.delete(b.dataset.v) : s.add(b.dataset.v); aplicar(); });
+  $("#ordem").onchange = e => { st.ordem = e.target.value; aplicar(); };
+  $("#q").oninput = e => { st.q = e.target.value; aplicar(); };
+  $("#btn-mais").onclick = () => { st.limite += 24; desenhar(); };
+}
+
+function filtradas() {
+  const termos = semAcento(st.q).split(/\s+/).filter(Boolean);
+  let l = R.filter(r =>
+    termos.every(t => r.b.includes(t)) &&
+    (!st.c.size || st.c.has(r.c)) &&
+    (!st.prog || String(r.p) === st.prog) &&
+    (!st.kg.size || st.kg.has(String(r.kg))) &&
+    (!st.cor.size || st.cor.has(r.cor)) &&
+    [...st.dieta].every(d => r.cats.includes(d)) &&
+    (!st.meus.has("fav") || favoritos.has(r.id)) &&
+    (!st.meus.has("feito") || feitos.has(r.id)) &&
+    (!st.meus.has("foto") || (r.foto && !r.fr)));
+  const o = st.ordem;
+  const k = r => r.k100 ?? (o === "k-" ? 1e9 : -1);
+  const ordemCol = Object.fromEntries(D.colecoes.map((c, i) => [c.id, i]));
+  const grupo = r => pao[r.c] ? 0 : 1;
+  const criterio = o === "rec" ? (a, b) => b.d.localeCompare(a.d) : o === "k-" ? (a, b) => k(a) - k(b) : o === "k+" ? (a, b) => k(b) - k(a)
+    : o === "foto" ? (a, b) => ((b.foto && !b.fr) - (a.foto && !a.fr)) || a.t.localeCompare(b.t, "pt") : (a, b) => a.t.localeCompare(b.t, "pt");
+  l.sort((a, b) => (grupo(a) - grupo(b)) || criterio(a, b) || (ordemCol[a.c] - ordemCol[b.c]));
+  return l;
+}
+
+let ultimaLista = [];
+function aplicar() { st.limite = 24; desenhar(); }
+function desenhar() {
+  const l = ultimaLista = filtradas();
+  $("#contagem").textContent = `${l.length} ${l.length === 1 ? "receita" : "receitas"}`;
+  $$(".filtros .chip").forEach(b => b.setAttribute("aria-pressed", st[b.dataset.f].has(b.dataset.v)));
+  $$(".atalhos .chip").forEach(b => b.setAttribute("aria-pressed", st.c.has(b.dataset.v)));
+  $("#f-prog").value = st.prog;
+  const ativos = [];
+  if (st.q) ativos.push(["q", "", `“${st.q}”`]);
+  for (const f of ["c", "kg", "cor", "dieta", "meus"]) for (const v of st[f]) ativos.push([f, v, f === "c" ? nomeCol[v] : f === "kg" ? v + " g" : DIETAS[v] || ({fav: "Favoritos", feito: "Já fiz", foto: "Com foto"}[v]) || v]);
+  if (st.prog) ativos.push(["prog", "", `Programa ${st.prog}`]);
+  $("#n-filtros").textContent = ativos.filter(a => a[0] !== "q").length || "";
+  $("#ativos").innerHTML = ativos.map(([f, v, n]) => `<button class="tag-ativa" data-f="${f}" data-v="${esc(v)}" title="Remover filtro" aria-label="Remover filtro ${esc(n)}">${esc(n)} ×</button>`).join("");
+  $$("#ativos .tag-ativa").forEach(b => b.onclick = () => {
+    const f = b.dataset.f; if (f === "q") { st.q = ""; $("#q").value = ""; } else if (f === "prog") st.prog = ""; else st[f].delete(b.dataset.v); aplicar(); });
+  if (!l.length) { $("#grade").innerHTML = `<div class="vazio">Nenhuma receita com esses filtros. Que tal <button class="btn sec" onclick="limparFiltros()">limpar os filtros</button>?</div>`; $("#btn-mais").hidden = true; return; }
+  const visiveis = l.slice(0, st.limite);
+  const temPaes = visiveis.some(r => pao[r.c]);
+  $("#grade").innerHTML = visiveis.map((r, i) => (i === 0 && pao[r.c] && visiveis.some(x => !pao[x.c]) ? `<h3 class="grupo-col">Pães</h3>` : "") +
+    (!pao[r.c] && (i === 0 ? temPaes === false && l.some(x => pao[x.c]) : pao[visiveis[i - 1].c]) ? `<h3 class="grupo-col">Outros produtos da máquina</h3>` : "") + `
+    <button class="card" type="button" data-id="${r.id}">
+      <div class="img">${imagem(r)}<div class="marcas">${r.fw ? '<span title="Foto ilustrativa da web">web</span>' : ""}${r.fr ? '<span title="Foto de referência de um pão semelhante">ref.</span>' : ""}${favoritos.has(r.id) ? "<span>♥</span>" : ""}${feitos.has(r.id) ? "<span>✓ já fiz</span>" : ""}</div></div>
+      <div class="corpo">
+        <h4>${esc(r.t)}</h4>
+        <div class="badges">
+          ${r.p ? `<span class="badge prog">Prog. ${r.p} · ${esc(PROG[r.p].nome)}</span>` : ""}
+          ${r.kg ? `<span class="badge">${r.kg} g</span>` : ""}${r.cor ? `<span class="badge">${r.cor}</span>` : ""}
+        </div>
+        ${r.k100 ? `<span class="kcal">≈ ${r.k100} kcal/100 g</span>` : ""}
+      </div>
+    </button>`).join("");
+  $$("#grade .card").forEach(c => c.onclick = () => abrir(c.dataset.id, c));
+  $("#btn-mais").hidden = l.length <= st.limite;
+}
+function limparFiltros() { st.q = ""; $("#q").value = ""; st.prog = ""; ["c", "kg", "cor", "dieta", "meus"].forEach(f => st[f].clear()); aplicar(); }
+function irParaReceitas() { aplicar(); $("#receitas").scrollIntoView(); }
+function filtrarColecao(c) { st.c.clear(); st.c.add(c); aplicar(); $("#receitas").scrollIntoView(); }
+function filtrarPrograma(n) { st.prog = String(n); aplicar(); $("#receitas").scrollIntoView(); }
+function surpresa() { const l = ultimaLista.length ? ultimaLista : R; abrir(l[Math.floor(Math.random() * l.length)].id, document.activeElement); }
+
+/* Markdown -> HTML (apenas o que as fichas usam) */
+function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, "$1<i>$2</i>"); }
+function md2html(md) {
+  const out = []; let lista = null, citacao = null;
+  const fechar = () => { if (lista) { out.push(`</${lista}>`); lista = null; } if (citacao) { out.push("<blockquote>" + citacao.map(p => `<p>${inline(p)}</p>`).join("") + "</blockquote>"); citacao = null; } };
+  for (const linha of md.split("\n")) {
+    let m;
+    if (/^<\/?(details|summary|small)/.test(linha)) { fechar(); out.push(linha.replace(/<summary><small>|<\/small><\/summary>/g, s => s.includes("/") ? "</summary>" : "<summary>")); continue; }
+    if ((m = linha.match(/^(#{1,3}) (.*)/))) { fechar(); out.push(`<h${m[1].length + 1}>${inline(m[2])}</h${m[1].length + 1}>`); continue; }
+    if (linha.startsWith(">")) { if (lista) { out.push(`</${lista}>`); lista = null; } citacao = citacao || []; const t = linha.replace(/^>\s?/, ""); if (t) citacao.push(t); continue; }
+    if ((m = linha.match(/^- (.*)/))) { if (citacao) fechar(); if (lista !== "ul") { fechar(); out.push("<ul>"); lista = "ul"; } out.push(`<li>${inline(m[1])}</li>`); continue; }
+    if ((m = linha.match(/^\d+\. (.*)/))) { if (citacao) fechar(); if (lista !== "ol") { fechar(); out.push("<ol>"); lista = "ol"; } out.push(`<li>${inline(m[1])}</li>`); continue; }
+    if (linha.trim() === "---") { fechar(); out.push("<hr>"); continue; }
+    if (!linha.trim()) { fechar(); continue; }
+    fechar(); out.push(`<p>${inline(linha)}</p>`);
+  }
+  fechar();
+  return out.join("\n");
+}
+function fichaHTML(r) {
+  let md = r.md.replace(/^# .*\n\n\*Coleção:.*\*\n/, "");
+  let html = md2html(md);
+  // destaca o bloco de configuração da máquina
+  html = html.replace(/(<h3>Na Mondial NPF-54<\/h3>\s*)(<ul>[\s\S]*?<\/ul>)/, '$1<div class="config">$2</div>');
+  return html;
+}
+
+/* modal da receita */
+function abrir(id, origem) {
+  const r = R.find(x => x.id === id); if (!r) return;
+  const jaAberto = modal.open;
+  if (!jaAberto && origem === undefined) origem = document.activeElement;
+  modal.innerHTML = `
+    <div class="modal-topo">${imagem(r)}<span class="alca-modal" aria-hidden="true"></span><button class="btn-icone fechar" type="button" onclick="fecharModal()" aria-label="Fechar">${ICO.fechar}</button></div>
+    <div class="modal-corpo">
+      ${r.fr ? `<p class="credito">Foto de referência, adaptada da receita semelhante <a href="#r=${esc(r.fr.o)}" onclick="event.preventDefault();abrir('${esc(r.fr.o)}')">${esc(r.fr.t)}</a>. Não é a foto desta receita.</p>` : ""}
+      ${r.fw ? `<p class="credito">Foto ilustrativa encontrada na web: <a href="${esc(r.fw.u)}" target="_blank" rel="noopener">${esc(r.fw.d)}</a></p>` : ""}
+      <small class="rotulo-col">${esc(nomeCol[r.c])} · ${r.cats.map(esc).join(" · ")}</small>
+      <h2 id="m-titulo">${esc(r.t)}</h2>
+      <div class="acoes">
+        <button class="btn sec pequeno" type="button" id="b-fav" aria-pressed="${favoritos.has(r.id)}">${ICO.coracao}Favorito</button>
+        <button class="btn sec pequeno" type="button" id="b-feito" aria-pressed="${feitos.has(r.id)}">${ICO.check}Já fiz</button>
+        <button class="btn fantasma pequeno" type="button" onclick="window.print()">${ICO.imprimir}Imprimir</button>
+        <button class="btn fantasma pequeno" type="button" id="b-copiar">${ICO.copiar}<span>Copiar Markdown</span></button>
+        <a class="btn fantasma pequeno" href="../${r.f}" target="_blank" rel="noopener">${ICO.arquivo}Abrir ficha .md</a>
+      </div>
+      <div class="ficha">${fichaHTML(r)}</div>
+      <div class="nota-pessoal"><label for="m-nota">Minhas anotações <small>(salvas neste navegador)</small></label>
+        <textarea id="m-nota" placeholder="Ex.: fiz com 1/2 xícara de integral, ficou ótimo com cor Média.">${esc(notas[r.id] || "")}</textarea></div>
+    </div>`;
+  const alternar = (btn, conj, chave) => btn.onclick = () => {
+    conj.has(r.id) ? conj.delete(r.id) : conj.add(r.id); guardar.gravar(chave, [...conj]);
+    btn.setAttribute("aria-pressed", conj.has(r.id));
+    btn.classList.remove("pop"); void btn.offsetWidth; if (conj.has(r.id)) btn.classList.add("pop");
+    desenhar(); };
+  alternar($("#b-fav"), favoritos, "fav"); alternar($("#b-feito"), feitos, "feito");
+  $("#b-copiar").onclick = async e => {
+    const b = e.currentTarget, rot = b.querySelector("span");
+    try { await navigator.clipboard.writeText(r.md); b.innerHTML = ICO.check + "<span>Copiado</span>"; }
+    catch (_) { b.innerHTML = ICO.alerta + "<span>Não foi possível copiar</span>"; }
+    clearTimeout(b._t); b._t = setTimeout(() => { if (b.isConnected) b.innerHTML = ICO.copiar + "<span>Copiar Markdown</span>"; }, 1800);
+  };
+  $("#m-nota").oninput = e => { notas[r.id] = e.target.value; if (!e.target.value) delete notas[r.id]; guardar.gravar("notas", notas); };
+  if (!jaAberto) { modal.showModal(); modal.scrollTop = 0; entrarModal(origem); }
+  else { modal.scrollTop = 0; modal.classList.add("no-topo"); }
+  history.replaceState(null, "", "#r=" + r.id);
+}
+
+/* início */
+function montarInicio() {
+  const porCol = c => R.filter(r => r.c === c).length;
+  const cardCol = c => `
+    <button class="colecao" type="button" style="--cor:${COL[c.id][0]}" onclick="filtrarColecao('${c.id}')">
+      <span class="ico" style="background:${COL[c.id][0]}">${svgCol(c.id)}</span>
+      <b>${esc(c.nome)}</b><small>${porCol(c.id)} receitas</small>
+    </button>`;
+  $("#lista-colecoes").innerHTML = D.colecoes.filter(c => c.pao).map(cardCol).join("");
+  $("#lista-colecoes-outros").innerHTML = D.colecoes.filter(c => !c.pao).map(cardCol).join("");
+  $("#lista-colecoes-outros").classList.add("menores");
+  const atalhos = ["paes-do-dia-a-dia", "integrais-e-graos", "doces-e-festivos", "salgados-e-temperados", "modelados", "sem-gluten"];
+  $("#atalhos").innerHTML = atalhos.map(c => `<button class="chip" type="button" data-v="${c}" onclick="filtrarColecao('${c}')">${esc(nomeCol[c])}</button>`).join("");
+  const comFoto = R.filter(r => r.foto && !r.fr).length;
+  $("#numeros").innerHTML = `<div><b>${R.length}</b><span>receitas</span></div><div><b>${D.colecoes.length}</b><span>coleções</span></div><div><b>${new Set(R.map(r => r.p).filter(Boolean)).size}</b><span>programas usados</span></div><div><b>${comFoto}</b><span>com foto</span></div>`;
+  // dicas
+  const manual = {titulo: "Da sua NPF-54 (manual)", texto: [
+    "Ordem na forma: primeiro os líquidos, depois os secos (açúcar, sal, gordura, farinha) e por último o fermento, numa cavidade na farinha, sem tocar o sal nem os líquidos.",
+    "Capacidade: no máximo 4 copos de farinha (pão de 1000 g) e 2 colheres de chá de fermento biológico seco. Ingredientes extras (frutas secas, queijo, castanhas): até ½ copo, colocados no BIP.",
+    "Fermento fresco: 1 tablete de 15 g equivale a 2 e ½ colheres de chá de fermento biológico seco. Não use fermento fresco com o timer.",
+    "Timer: atrasa o pão pronto em até 15 horas. Não use com leite, ovos, queijo ou outros ingredientes perecíveis.",
+    "Ponto da massa: nos primeiros 5 ou 6 minutos, abra a tampa e confira. A massa deve formar uma bola macia. Se grudar nas paredes, acrescente 1 colher de sopa de farinha; se estiver dura e esfarelada, 1 colher de chá de água por vez.",
+    "Pão cresceu demais: reduza o fermento em ½ colher de chá e o açúcar em 1 ou 2 colheres de chá. Pão muito escuro: use a cor Clara e reduza 1 colher de chá de açúcar.",
+    "Temperatura: ingredientes em torno de 23 °C. Em dias frios (abaixo de 18 °C) use água morna de 38 a 43 °C; em dias muito quentes, reduza 1 a 2 colheres de sopa de água.",
+    "Depois de pronto, deixe o pão descansar 20 minutos antes de cortar. A máquina mantém aquecido por 1 hora."]};
+  $("#lista-dicas").innerHTML = [manual, ...D.dicas.map(d => ({titulo: d.titulo, texto: d.texto.split(/\n+/)}))].map((d, i) => `
+    <details class="dica" ${i === 0 ? "open" : ""}><summary>${esc(d.titulo)}</summary><div class="conteudo">${d.texto.map(p => `<p>${inline(p)}</p>`).join("")}</div></details>`).join("");
+  // tabela de programas
+  const n = k => R.filter(r => r.p === Number(k)).length;
+  $("#tab-prog").innerHTML = `<thead><tr><th>Nº</th><th>Programa</th><th>Peso</th><th>Cor</th><th>Tempos no manual</th><th>Receitas</th></tr></thead><tbody>` +
+    Object.entries(PROG).map(([k, p]) => `<tr><td><b>${k}</b></td><td>${esc(p.nome)}</td><td>${p.peso ? "500 / 750 / 1000 g" : "—"}</td><td>${p.cor ? "Clara / Média" : "—"}</td>
+      <td>${Object.entries(p.tempos).map(([g, t]) => (g === "None" ? "" : g + " g: ") + t + " h").join(" · ") || "—"}</td>
+      <td>${n(k) ? `<button onclick="filtrarPrograma(${k})">${n(k)}</button>` : "0"}</td></tr>`).join("") + "</tbody>";
+}
+
+/* ---------- criador de receitas ---------- */
+const ING = D.ingredientes, ingPorNome = Object.fromEntries(ING.map(i => [i.n, i]));
+const UNIDADES = {xicara: "xícara", cs: "colher de sopa", cc: "colher de chá", g: "grama (g)", ml: "ml", un: "unidade"};
+let rascunho = guardar.ler("rascunho", null) || {nome: "", prog: "1", modo: "maq", linhas: []};
+function gramasLinha(l) {
+  const i = ingPorNome[l.ing]; const q = parseFloat(String(l.q).replace(",", ".")); if (!i || !(q > 0)) return null;
+  const x = i.x || 100;
+  return {xicara: q * x, cs: q * i.cs, cc: q * i.cc, g: q, ml: q * x / 240, un: i.u ? q * i.u : null}[l.u];
+}
+function linhaHTML(l, k) {
+  return `<div class="linha-ing" data-k="${k}">
+    <input list="lista-ing" value="${esc(l.ing)}" placeholder="Ingrediente" aria-label="Ingrediente" data-c="ing">
+    <input type="text" inputmode="decimal" value="${esc(l.q)}" placeholder="Qtd" aria-label="Quantidade" data-c="q">
+    <select data-c="u" aria-label="Unidade">${Object.entries(UNIDADES).map(([v, n]) => `<option value="${v}" ${l.u === v ? "selected" : ""}>${n}</option>`).join("")}</select>
+    <button class="rem" type="button" aria-label="Remover" onclick="remLinha(${k})">${ICO.fechar}</button></div>`;
+}
+function desenharCriador() {
+  $("#cr-nome").value = rascunho.nome; $("#cr-prog").value = rascunho.prog; $("#cr-modo").value = rascunho.modo;
+  $("#cr-linhas").innerHTML = rascunho.linhas.map(linhaHTML).join("");
+  $$("#cr-linhas input, #cr-linhas select").forEach(el => el.oninput = el.onchange = () => {
+    rascunho.linhas[el.closest(".linha-ing").dataset.k][el.dataset.c] = el.value; calcular(); });
+  calcular();
+}
+function addLinha(l) { rascunho.linhas.push(l || {ing: "", q: "", u: "xicara"}); desenharCriador(); }
+function remLinha(k) { rascunho.linhas.splice(k, 1); desenharCriador(); }
+function novoRascunho() { rascunho = {nome: "", prog: "1", modo: "maq", linhas: []}; addLinha(); }
+function carregarBase() {
+  rascunho = {nome: "Meu pão", prog: "1", modo: "maq", linhas: [
+    {ing: "água", q: "1 e 1/4", u: "xicara"}, {ing: "óleo vegetal", q: "2", u: "cs"}, {ing: "açúcar refinado", q: "2", u: "cs"},
+    {ing: "sal", q: "1.5", u: "cc"}, {ing: "farinha de trigo", q: "3.5", u: "xicara"}, {ing: "fermento biológico seco", q: "2", u: "cc"}]};
+  rascunho.linhas.forEach(l => l.q = String(l.q).replace("1 e 1/4", "1.25"));
+  desenharCriador();
+}
+function calcular() {
+  rascunho.nome = $("#cr-nome").value; rascunho.prog = $("#cr-prog").value; rascunho.modo = $("#cr-modo").value;
+  guardar.gravar("rascunho", rascunho);
+  let g = 0, kcal = 0, far = 0, ag = 0, liq = 0, ferm = 0, desconhecidos = [];
+  for (const l of rascunho.linhas) {
+    if (!l.ing) continue;
+    const i = ingPorNome[l.ing], gr = gramasLinha(l);
+    if (!i) { desconhecidos.push(l.ing); continue; }
+    if (gr == null) continue;
+    g += gr; kcal += gr * i.k / 100;
+    if (i.far) far += gr; if (i.ag) ag += gr;
+    if (/^(água|leite|bebida|suco|cerveja|iogurte|leite fermentado)/.test(i.n)) liq += gr;
+    if (i.n === "ovo") liq += gr * 0.75;
+    if (i.n === "fermento biológico seco") ferm += gr / 3; if (i.n === "fermento biológico fresco") ferm += gr / 6;
+  }
+  const evap = {maq: D.cfg.evapMaq, forno: D.cfg.evapForno, nao: 0}[rascunho.modo];
+  const final = g * (1 - evap), p = PROG[rascunho.prog];
+  const peso = p.peso && final ? [500, 750, 1000].reduce((a, b) => Math.abs(b - final) < Math.abs(a - final) ? b : a) : null;
+  const cor = p.cor ? ((rascunho.prog === "3" || rascunho.prog === "16" || (far && ag / far >= D.cfg.limiarDoce)) ? "Clara" : "Média") : null;
+  const alertas = [];
+  if (far / 120 > 4.05) alertas.push(`Cerca de ${(far / 120).toFixed(1).replace(".", ",")} xícaras de farinhas: o manual indica no máximo 4 copos (pão de 1000 g).`);
+  if (ferm > 2.05) alertas.push(`Fermento equivalente a ${ferm.toFixed(1).replace(".", ",")} colheres de chá de seco: o manual indica no máximo 2.`);
+  if (desconhecidos.length) alertas.push("Escolha ingredientes da lista para calcular: " + desconhecidos.map(esc).join(", "));
+  const hidr = far ? Math.round(liq / far * 100) : null;
+  $("#cr-resumo").innerHTML = g ? `
+    <div class="grande">${fmt(kcal)} kcal</div>
+    <dl>
+      <dt>Peso dos ingredientes</dt><dd>${fmt(g)} g</dd>
+      <dt>Peso estimado final</dt><dd>${fmt(final)} g</dd>
+      <dt>Porção de 50 g</dt><dd>${final ? fmt(kcal / final * 50) : "—"} kcal</dd>
+      <dt>Porção de 100 g</dt><dd>${final ? fmt(kcal / final * 100) : "—"} kcal</dd>
+      ${far ? `<dt>Farinhas</dt><dd>${fmt(far)} g (≈ ${(far / 120).toFixed(1).replace(".", ",")} xíc.)</dd><dt>Hidratação</dt><dd>${hidr}%</dd>` : ""}
+      <dt>Programa</dt><dd>${rascunho.prog} – ${esc(p.nome)}</dd>
+      <dt>Peso na máquina</dt><dd>${peso ? peso + " g" : "não se aplica"}</dd>
+      <dt>Cor</dt><dd>${cor || "não se aplica"}</dd>
+    </dl>
+    ${alertas.map(a => `<div class="alerta">${ICO.alerta}<span>${a}</span></div>`).join("")}
+    ${!alertas.length && far ? `<div class="ok">${ICO.ok}<span>Dentro dos limites do manual da NPF-54.</span></div>` : ""}
+`
+    : `<p style="color:var(--texto-suave)">Adicione ingredientes para ver calorias, peso e a configuração sugerida.</p>`;
+  return {g, kcal, final, peso, cor, alertas, evap};
+}
+function baixarFicha() {
+  const c = calcular(), p = PROG[rascunho.prog];
+  const nomeU = {xicara: ["xícara", "xícaras"], cs: ["colher de sopa", "colheres de sopa"], cc: ["colher de chá", "colheres de chá"], g: ["g", "g"], ml: ["ml", "ml"], un: ["", ""]};
+  const itens = rascunho.linhas.filter(l => l.ing && l.q).map(l => {
+    const gr = gramasLinha(l), q = String(l.q).replace(".", ",");
+    const u = nomeU[l.u][parseFloat(String(l.q).replace(",", ".")) > 1 ? 1 : 0];
+    return `- ${q}${l.u === "g" || l.u === "ml" ? u : " " + u} ${l.u === "un" ? "" : "de "}${l.ing}`.replace("  ", " ") + (gr && l.u !== "g" ? ` (${fmt(gr)} g)` : "");
+  });
+  const md = [`# ${rascunho.nome || "Nova receita"}`, "", "*Receita criada no Miolo & Casca*", "", "## Na Mondial NPF-54", "",
+    `- **Programa:** ${rascunho.prog} – ${p.nome}`, `- **Peso:** ${c.peso ? c.peso + " g" : "não se aplica"}`, `- **Cor:** ${c.cor || "não se aplica"}`,
+    ...c.alertas.map(a => "- ⚠️ " + a), "", "## Ingredientes", "", ...itens, "", "## Modo de preparo", "",
+    "1. Coloque os líquidos na forma, depois os secos e por último o fermento, sem tocar o sal nem os líquidos.",
+    "2. Selecione o programa, o peso e a cor indicados acima e pressione INICIAR/PARAR.", "", "---", "",
+    "<details>", "<summary><small>Informação nutricional estimada</small></summary>", "", "<small>", "",
+    `- Valor calórico estimado do produto final: **${fmt(Math.round(c.kcal / 10) * 10)} kcal**`,
+    `- Peso estimado: **${fmt(Math.round(c.final / 10) * 10)} g**` + (c.evap ? ` (ingredientes ${fmt(c.g)} g − ${String(c.evap * 100).replace(".", ",")}% de evaporação ao assar)` : " (sem perda de cozimento estimada)"),
+    `- Por porção de 50 g: **${c.final ? fmt(c.kcal / c.final * 50) : "—"} kcal**`, `- Por porção de 100 g: **${c.final ? fmt(c.kcal / c.final * 100) : "—"} kcal**`, "",
+    "Notas:", "- Energia pela TACO 4ª ed. (NEPA/UNICAMP) e, na falta, USDA FoodData Central.",
+    ...[...new Set(rascunho.linhas.map(l => ingPorNome[l.ing]).filter(i => i && i.f.startsWith("Estimado")))].map(i => `- O valor calórico de "${i.n}" foi estimado: ${i.f.replace(/^Estimado /, "")}.`),
+    "", "</small>", "", "</details>", ""].join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([md], {type: "text/markdown"}));
+  a.download = (semAcento(rascunho.nome || "nova-receita").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "nova-receita") + ".md";
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+function montarCriador() {
+  $("#lista-ing").innerHTML = ING.map(i => `<option value="${esc(i.n)}"></option>`).join("");
+  $("#cr-prog").innerHTML = Object.entries(PROG).map(([k, p]) => `<option value="${k}">${k} – ${esc(p.nome)}</option>`).join("");
+  ["#cr-nome", "#cr-prog", "#cr-modo"].forEach(s => $(s).oninput = $(s).onchange = calcular);
+  if (!rascunho.linhas.length) rascunho.linhas.push({ing: "", q: "", u: "xicara"});
+  desenharCriador();
+}
+
+montarInicio(); montarFiltros(); montarCriador(); aplicar(); iniciarFolha();
+const hashId = (location.hash.match(/^#r=(.+)$/) || [])[1];
+if (hashId) abrir(decodeURIComponent(hashId));
+</script>
+</body>
+</html>

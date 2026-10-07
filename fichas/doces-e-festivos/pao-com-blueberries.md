@@ -1,0 +1,48 @@
+# Pão com Blueberries
+
+*Coleção: Doces e festivos · Categorias originais: Doce*
+
+## Na Mondial NPF-54
+
+- **Programa:** 1 – Pão Básico
+- **Alternativas:** 17 – Sanduíche
+- **Peso:** 750 g
+- **Cor:** Clara *(pão doce ou com muito açúcar/gordura)*
+- **Tempo no manual:** 3:00 h
+- **Timer:** não use o timer com esta receita (leva leite, ovos, queijo ou manteiga; recomendação do manual).
+
+## Ingredientes
+
+- 3/4 xícara de leite (180 g)
+- 3 colheres de sopa de água (45 g)
+- 1 ovo (50 g)
+- 2 colheres de sopa de manteiga (28 g)
+- 3 colheres de sopa de açúcar (34 g)
+- 3/4 colher de chá de sal (4,5 g)
+- 1/4 colher de chá de noz-moscada em pó (0,5 g)
+- 3 xícaras de farinha de trigo (360 g)
+- 2 colheres de chá de fermento biológico seco (6 g)
+- 100g de blueberries secas
+
+## Modo de preparo
+
+1. Coloque todos os ingredientes na máquina de pão, exceto as blueberries, selecione o programa e ligue a máquina. Quando soar o BIP ou a massa já estiver homogênea adicione as blueberries secas e deixe terminar.
+
+---
+
+<details>
+<summary><small>Informação nutricional estimada</small></summary>
+
+<small>
+
+- Valor calórico estimado do produto final: **1.880 kcal**
+- Peso estimado: **720 g** (ingredientes 810 g − 11% de evaporação ao assar no forno da máquina)
+- Por porção de 50 g: **131 kcal**
+- Por porção de 100 g: **262 kcal**
+
+Notas:
+- Energia pela TACO 4ª ed. (NEPA/UNICAMP) e, na falta, USDA FoodData Central; medidas: xícara 240 ml, colher de sopa 15 ml, colher de chá 5 ml, ovo 50 g. Quando há alternativas, foi usada a primeira opção.
+
+</small>
+
+</details>
